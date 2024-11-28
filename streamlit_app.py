@@ -1,5 +1,6 @@
 import streamlit as st  
 from PIL import Image  
+import io  
 
 # 앱 제목  
 st.title("이미지 반으로 줄이기")  
@@ -22,10 +23,15 @@ if uploaded_file is not None:
     # 줄인 이미지 표시  
     st.image(resized_image, caption="줄인 이미지", use_column_width=True)  
 
+    # 줄인 이미지를 바이트로 변환  
+    buf = io.BytesIO()  
+    resized_image.save(buf, format="PNG")  
+    byte_image = buf.getvalue()  
+
     # 줄인 이미지 다운로드  
     st.download_button(  
         label="줄인 이미지 다운로드",  
-        data=resized_image,  
+        data=byte_image,  
         file_name="resized_image.png",  
         mime="image/png"  
     )
