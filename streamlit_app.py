@@ -10,4 +10,3 @@ user_input = st.text_input("메시지를 입력하세요:")
 # 입력된 메시지 출력하기
 if user_input:
     st.write(f"입력하신 메시지: {user_input}")
-출처: https://markspeople.tistory.com/141 [시냇가의열매나무:티스토리]
